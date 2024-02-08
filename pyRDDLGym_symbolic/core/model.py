@@ -324,19 +324,20 @@ class RDDLModelXADD(RDDLPlanningModel):
             self._num_uniform += 1
             return node_id
 
-        elif dist == 'normal':
+        elif dist == 'Normal':
             assert len(args) == 2
             mean, var = args
             num_rv = self._num_gaussian
-            gauss_rv = RandomVar(GAUSSIAN_VAR_NAME.format(num=num_rv))
-            gaussian = self.context.convert_to_xadd(
-                gauss_rv,
+            normal_rv, normal_rv_id = self.add_sym_var(
+                GAUSSIAN_VAR_NAME.format(num=num_rv),
+                var_type='random',
+                random=True,
                 params=(0, 1),  # rv ~ Normal(0, 1)
                 type='NORMAL',
             )
             # mean + sqrt(var) * epsilon
             std = self.context.unary_op(var, 'sqrt')
-            scaled = self.context.apply(std, gaussian, 'prod')
+            scaled = self.context.apply(std, normal_rv_id, 'prod')
             node_id = self.context.apply(mean, scaled, 'add')
             self._num_gaussian += 1
             return node_id
@@ -415,7 +416,12 @@ class RDDLModelXADD(RDDLPlanningModel):
         etype, op = expr.etype
         args = list(map(self.expr_to_xadd, expr.args))
         if len(args) == 1 and op == '~':
+            # Logical negation
             node_id = self.context.unary_op(args[0], OP_TO_XADD_OP.get(op, op))
+            return node_id
+        elif len(args) == 1 and op == '^':
+            # This corresponds to the `forall` operator with one argument.
+            node_id = args[0]
             return node_id
         elif len(args) >= 2:
             if op == '|' or op == '^':
@@ -480,7 +486,10 @@ class RDDLModelXADD(RDDLPlanningModel):
     def collect_vars(self, node_id: int) -> Set[str]:
         """Returns the set containing variables existing in the current node."""
         var_set = self.context.collect_vars(node_id)
-        var_set = var_set.difference(self.context._random_var_set)
+        # Below is a hacky way to remove RVs from the var set.
+        # The complication arises as symengine symbols do not easily lend itself to
+        # subclassing.
+        var_set = [v for v in var_set if not str(v).startswith('#')]
         return set(self._sym_var_name_to_var_name[str(v)] for v in var_set)
 
     @property
