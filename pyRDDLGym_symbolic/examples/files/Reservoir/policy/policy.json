@@ -1,0 +1,5 @@
+{
+    "action-fluents": ["release___t1", "release___t2"],
+    "release___t1": "pyRDDLGym_symbolic/examples/files/Reservoir/policy/release___t1.xadd",
+    "release___t2": "pyRDDLGym_symbolic/examples/files/Reservoir/policy/release___t2.xadd"
+}

@@ -1,0 +1,5 @@
+pyRDDLGym>=2.0.0
+gurobipy>=10.0.0
+xaddpy>=0.2.5
+sympy>=1.12
+symengine>=0.11.0

@@ -1,0 +1,4 @@
+{
+    "action-fluents": ["a"],
+    "a": "pyRDDLGym_symbolic/examples/files/RobotLinear_1D/policy/a.xadd"
+}

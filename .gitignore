@@ -1,0 +1,4 @@
+.vscode/*
+tmp/*
+pyRDDLGym_symbolic.egg-info/*
+*/**/__pycache__/*
