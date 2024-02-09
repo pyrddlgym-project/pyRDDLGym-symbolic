@@ -14,8 +14,9 @@ In this directory, we provide symbolic toolkits that you can use with [pyRDDLGym
 ## Installation
 
 ```
-# Create a new conda environment
+# Create and activate a new conda environment
 conda create -n symbolic python     # Note: Python 3.12 won't work with Gurobi 10.
+conda activate symbolic
 
 # Install the xaddpy >= 0.2.5
 pip install xaddpy
@@ -25,10 +26,17 @@ cd ~/path/to/pyRDDLGym
 git checkout pyRDDLGym-v2-branch
 pip install -e .
 
+# (Optional) manually install rddlrepository-v2
+# First, make sure you git cloned rddlrepository
+# https://github.com/pyrddlgym-project/rddlrepository
+cd ~/path/to/rddlrepository
+git checkout v2-branch
+pip install -e .
+
 # Install Gurobipy (make sure you have a license)
 python -m pip install gurobipy
 
-# Install pyRDDLGym_symbolic
+# Finally, install pyRDDLGym_symbolic
 cd ~/path/to/pyRDDLGym_symbolic
 pip install -e .
 ```

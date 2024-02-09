@@ -1,23 +1,12 @@
 """An example RDDL simulation run."""
 
 import argparse
-import os
 import pprint
 
 import pyRDDLGym
-from pyRDDLGym.core.env import RDDLEnv
-from pyRDDLGym.core.grounder import RDDLGrounder
-from pyRDDLGym.core.parser.reader import RDDLReader
-from pyRDDLGym.core.parser.parser import RDDLParser
 from pyRDDLGym.core.policy import RandomAgent
 
 from pyRDDLGym_symbolic.core.simulator import RDDLSimulatorXADD
-from pyRDDLGym_symbolic.core.model import RDDLModelXADD
-
-
-_DIR = 'pyRDDLGym_symbolic/examples/files/{domain}/'
-_DOMAIN_PATH = _DIR + 'domain.rddl'
-_INSTANCE_PATH = _DIR + 'instance{instance}.rddl'
 
 
 def main(args: argparse.Namespace):
