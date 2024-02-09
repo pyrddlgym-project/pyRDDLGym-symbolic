@@ -1,12 +1,14 @@
-# Symbolic Solvers via Dynamic Programming (SDP)
+# Symbolic Toolset for pyRDDLGym
 
 Author: [Jihwan Jeong](https://jihwan-jeong.netlify.app)
 
 
 In this directory, we provide symbolic toolkits that you can use with pyRDDLGym. Specifically, we provide the following:
-- Symbolic compilation of CPFs (conditional probability functions) in XADD (eXtended Algebraic Decision Diagram)
-- Dynamic Bayes Net (DBN) visualization, allowing dependence analysis
-- Symbolic Dynamic Programming (SDP): [symbolic value iteration]()
+- [Symbolic compilation of CPFs](#xadd-compilation-of-cpfs) (conditional probability functions) in XADD (eXtended Algebraic Decision Diagram)
+- [Dynamic Bayes Net (DBN) visualization](#visualizing-dbns-with-xadd), allowing dependence analysis
+- Symbolic Dynamic Programming (SDP): 
+    - [Symbolic value iteration](#value-iteration-vi)
+    - [Symbolic policy evaluation](#policy-evaluation-pe)
 
 
 ## Installation
