@@ -3,7 +3,7 @@
 Author: [Jihwan Jeong](https://jihwan-jeong.netlify.app)
 
 
-In this directory, we provide symbolic toolkits that you can use with pyRDDLGym. Specifically, we provide the following:
+In this directory, we provide symbolic toolkits that you can use with [pyRDDLGym](https://github.com/pyrddlgym-project/pyRDDLGym). Specifically, we provide the following:
 - [Symbolic compilation of CPFs](#xadd-compilation-of-cpfs) (conditional probability functions) in XADD (eXtended Algebraic Decision Diagram)
 - [Dynamic Bayes Net (DBN) visualization](#visualizing-dbns-with-xadd), allowing dependence analysis
 - Symbolic Dynamic Programming (SDP): 
@@ -131,7 +131,7 @@ Here's the [result](assets/burning___x1__y1.pdf):
   </a>
 </div>
 
-If the figure is too small to comprehend, you can click the link above to check out the XADD graph. Notice that the leaf nodes contain either a Boolean value or a real value. This is the case when you pass `reparam=False` to the `RDDLModelXADD` class instantiation. Otherwise, you'll see the Bernoulli variables in the CPFs reparameterized using uniform random variables. When we don't reparameterize, the leaf nodes show the Bernoulli probability values.
+If the figure is too small to comprehend, you can click the link above to check out the XADD graph. Notice that the leaf nodes contain either a Boolean value or a real value. This is the case when you pass `reparam=False` to the `RDDLModelXADD` class constructor. Otherwise, you'll see the Bernoulli variables in the CPFs reparameterized using uniform random variables. When we don't reparameterize, the leaf nodes show the Bernoulli probability values.
 
 How will the graph look like for `out-of-fuel'(x1, y1)` variable? Here's the result of `context.save_graph(model_xadd.cpfs["out-of-fuel_x1_y1'"], file_name="out_of_fuel_x1_y1")`:
 

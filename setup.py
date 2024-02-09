@@ -1,18 +1,21 @@
-# This file is part of pyRDDLGym.
+# This file is part of pyRDDLGym-symbolic.
 
-# pyRDDLGym is free software: you can redistribute it and/or modify
+# pyRDDLGym-symbolic is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
 # the Free Software Foundation.
 
-# pyRDDLGym is distributed in the hope that it will be useful,
+# pyRDDLGym-symbolic is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # MIT License for more details.
 
 # You should have received a copy of the MIT License
-# along with pyRDDLGym. If not, see <https://opensource.org/licenses/MIT>.
+# along with pyRDDLGym-symbolic. If not, see <https://opensource.org/licenses/MIT>.
 
 from setuptools import setup, find_packages
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
 
 setup(
@@ -20,12 +23,11 @@ setup(
       version='0.0.1',
       author="Jihwan Jeong, Michael Gimelfarb, Scott Sanner",
       author_email="jiihwan.jeong@gmail.com, mike.gimelfarb@mail.utoronto.ca, ssanner@mie.utoronto.ca",
-      description="pyRDDLGym-symbolic: Symbolic compilation of RDDL description files, and optimization tools.",
+      description="pyRDDLGym-symbolic: Symbolic toolset for pyRDDLGym via XADD.",
       license="MIT License",
-      url="https://github.com/pyrddlgym-project/pyRDDLGym-symbolic",
       packages=find_packages(),
       install_requires=[
-          'pyRDDLGym>=2.0.0',
+          'pyRDDLGym>=2.0.1',
           'gurobipy>=10.0.0',
           'xaddpy>=0.2.5',
           'sympy>=1.12',
@@ -34,6 +36,8 @@ setup(
       python_requires=">=3.8",
       package_data={'': ['*.cfg']},
       include_package_data=True,
+      long_description=long_description,
+      long_description_content_type="text/markdown",
       classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
@@ -42,5 +46,6 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    ],
+      ],
+      url="https://github.com/pyrddlgym-project/pyRDDLGym-symbolic",
 )

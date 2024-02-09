@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyRDDLGym_symbolic"
+version = "0.0.1"
+authors = [
+  { name="Jihwan Jeong", email="jiihwan.jeong@gmail.com" },
+]
+license = {file = "LICENSE"}
+keywords  = ["pyRDDLGym", "Symbolic Dynamic Programming", "RDDL", "Dynamic Bayes Net"]
+description = "pyRDDLGym-symbolic: Symbolic toolset for pyRDDLGym via XADD."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "symengine>=0.11.0",
+  "pyRDDLGym>=2.0.1",
+  "gurobipy>=10.0.0",
+  "xaddpy>=0.2.5",
+  "sympy>=1.12",
+]
+[project.urls]
+"Homepage" = "https://github.com/jihwan-jeong/xaddpy"
+"Bug Tracker" = "https://github.com/jihwan-jeong/xaddpy/issues"
