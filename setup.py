@@ -20,14 +20,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
       name='pyRDDLGym-symbolic',
-      version='0.0.1',
+      version='0.0.3',
       author="Jihwan Jeong, Michael Gimelfarb, Scott Sanner",
       author_email="jiihwan.jeong@gmail.com, mike.gimelfarb@mail.utoronto.ca, ssanner@mie.utoronto.ca",
       description="pyRDDLGym-symbolic: Symbolic toolset for pyRDDLGym via XADD.",
       license="MIT License",
       packages=find_packages(),
       install_requires=[
-          'pyRDDLGym>=2.0.1',
+          'pyRDDLGym>=2.0',
           'gurobipy>=10.0.0',
           'xaddpy>=0.2.5',
           'sympy>=1.12',
