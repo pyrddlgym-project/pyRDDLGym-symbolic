@@ -9,6 +9,7 @@ In this directory, we provide symbolic toolkits that you can use with [pyRDDLGym
 - Symbolic Dynamic Programming (SDP): 
     - [Symbolic value iteration](#value-iteration-vi)
     - [Symbolic policy evaluation](#policy-evaluation-pe)
+- [RDDL simulation with the symbolically compiled model](#simulation)
 
 
 ## Installation
@@ -97,7 +98,7 @@ We use the [xaddpy](https://github.com/jihwan-jeong/xaddpy) package that provide
 pip install xaddpy
 ```
 
-## XADD compilation of the Wildfire domain
+### XADD compilation of the Wildfire domain
 
 In this article, we are going to walk you through how you can use `xaddpy` to compile a CPF of a grounded fluent into an XADD node. 
 
@@ -376,6 +377,12 @@ The `PolicyParser` class implements an assertion that in the entire state space 
 A unique step in PE is where we substitute in the policy XADDs into the CPFs and the reward function. See lines 20 - 58 of [pe.py](pyRDDLGym_symbolic/solver/pe.py). Note how we handle the continuous and Boolean action variables differently.
 
 Once all the CPFs and reward function are restricted with the given policy XADDs, the remaining steps are identical to VI, except that we do not have to iterate over actions as they have all been already incorporated into CPFs.
+
+## Simulation
+
+Optionally, we showcase how you can simulate an XADD-compiled RDDL instance in [pyRDDLGym_symbolic/examples/run_simulation.py](pyRDDLGym_symbolic/examples/run_simulation.py). Check out [pyRDDLGym_symbolic/core/simulation.py](pyRDDLGym_symbolic/core/simulation.py) to see how things are implemented.
+
+Disclaimer: note that we won't actively support the simulation functionality as it has a limited use-case. Hence, there is a chance that an update in the main pyRDDLGym repository breaks the current simulation code we provide in this repository. This code is only provided as an example.
 
 ## Citations
 
