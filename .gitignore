@@ -2,3 +2,4 @@
 tmp/*
 pyRDDLGym_symbolic.egg-info/*
 */**/__pycache__/*
+dist/*

@@ -299,14 +299,14 @@ class RDDLModelXADD(RDDLPlanningModel):
         elif dist == 'Binomial':
             pass
 
-        elif dist == 'krondelta':
+        elif dist == 'KronDelta':
             # Change Boolean leaf values to 0s and 1s
             assert len(args) == 1
             arg, = args
             node_id = self.context.unary_op(arg, op='int')
             return node_id
 
-        elif dist == 'exponential':
+        elif dist == 'Exponential':
             assert len(args) == 1
             num_rv = self._num_uniform
             unif_rv = RandomVar(UNIFORM_VAR_NAME.format(num=num_rv))

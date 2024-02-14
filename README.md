@@ -77,14 +77,10 @@ Unfortunately, we do not provide support for Windows systems, though you can ref
 pip install pygraphviz
 ```
 
-2. MacOS
+2. MacOS: please use conda install
 
 ```shell
-python -m pip install \
-    --global-option=build_ext \
-    --global-option="-I$(brew --prefix graphviz)/include/" \
-    --global-option="-L$(brew --prefix graphviz)/lib/" \
-    pygraphviz
+conda install pygraphviz
 ```
 
 Note that due to the default installation location by `brew`, you need to provide some additional options for `pip` installation.
