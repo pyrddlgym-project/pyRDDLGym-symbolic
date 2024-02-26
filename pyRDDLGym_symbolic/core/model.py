@@ -260,9 +260,10 @@ class RDDLModelXADD(RDDLPlanningModel):
         dist = expr.etype[1]
         args = list(map(self.expr_to_xadd, expr.args))
 
-        if dist != 'Bernoulli':
+        if dist not in {'Bernoulli', 'KronDelta', 'DiracDelta'}:
             assert self.reparam, (
-                'Currently, only Bernoulli can be used without reparameterization.')
+                f'Distribution {dist} has to be used with reparameterization.'
+            )
 
         if dist == 'Bernoulli':
             assert len(args) == 1
@@ -305,6 +306,12 @@ class RDDLModelXADD(RDDLPlanningModel):
             arg, = args
             node_id = self.context.unary_op(arg, op='int')
             return node_id
+
+        elif dist == 'DiracDelta':
+            # Pass through the DiracDelta operation.
+            assert len(args) == 1
+            arg, = args
+            return arg
 
         elif dist == 'Exponential':
             assert len(args) == 1
