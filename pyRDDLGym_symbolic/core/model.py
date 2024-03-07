@@ -422,14 +422,19 @@ class RDDLModelXADD(RDDLPlanningModel):
         assert expr.etype[0] == 'boolean'
         etype, op = expr.etype
         args = list(map(self.expr_to_xadd, expr.args))
-        if len(args) == 1 and op == '~':
-            # Logical negation
-            node_id = self.context.unary_op(args[0], OP_TO_XADD_OP.get(op, op))
-            return node_id
-        elif len(args) == 1 and op == '^':
-            # This corresponds to the `forall` operator with one argument.
-            node_id = args[0]
-            return node_id
+        if len(args) == 1:
+            if op == '~':
+                # Logical negation
+                node_id = self.context.unary_op(args[0], OP_TO_XADD_OP.get(op, op))
+                return node_id
+            elif op == '^':
+                # This corresponds to the `forall` operator with one argument.
+                node_id = args[0]
+                return node_id
+            elif op == '|':
+                # This corresponds to the `exists` operator with one argument.
+                node_id = args[0]
+                return node_id
         elif len(args) >= 2:
             if op == '|' or op == '^':
                 node_id = args[0]
@@ -464,7 +469,8 @@ class RDDLModelXADD(RDDLPlanningModel):
             if name.startswith('Bernoulli'):
                 bernoulli_set.add(v)
                 # Manually remove the Bernoulli variable from the Boolean variable set.
-                self.context._bool_var_set.remove(v)
+                if v in self.context._bool_var_set:
+                    self.context._bool_var_set.remove(v)
         for rv in bernoulli_set:
             bern_param_node_id = get_bernoulli_node_id(rv)
             leaf_op = DeltaFunctionSubstitution(
