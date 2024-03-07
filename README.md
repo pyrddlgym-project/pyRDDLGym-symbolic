@@ -22,17 +22,11 @@ conda activate symbolic
 # Install the xaddpy >= 0.2.5
 pip install xaddpy
 
-# Manually install pyRDDLGym >= 2.0.1
-cd ~/path/to/pyRDDLGym
-git checkout pyRDDLGym-v2-branch
-pip install -e .
+# Install pyRDDLGym >= 2.0
+pip install pyrddlgym
 
-# (Optional) manually install rddlrepository-v2
-# First, make sure you git cloned rddlrepository
-# https://github.com/pyrddlgym-project/rddlrepository
-cd ~/path/to/rddlrepository
-git checkout v2-branch
-pip install -e .
+# (Optional) install rddlrepository-v2
+pip install rddlrepository
 
 # Install Gurobipy (make sure you have a license)
 python -m pip install gurobipy
