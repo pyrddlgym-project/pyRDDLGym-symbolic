@@ -93,7 +93,8 @@ class RDDL2Graph:
 
     def __init__(
             self,
-            domain: str,
+            xadd_model: Optional[RDDLModelXADD] = None,
+            domain: str = None,
             instance: str = '0',
             domain_file: Optional[str] = None,
             instance_file: Optional[str] = None,
@@ -101,27 +102,31 @@ class RDDL2Graph:
             strict_grouping: bool = False,
             reparam: bool = False,
     ):
-        self._domain, self._instance = domain, str(instance)
+        self.model = xadd_model
+        # Build a XADD model if not provided
+        if xadd_model is None:
+            assert domain is not None, "Domain name must be provided"
+            self._domain, self._instance = domain, str(instance)
 
-        if domain_file is None:
-            domain_file = Path(f"pyRDDLGym_symbolic/examples/files/{domain}/domain.rddl")
-        if instance_file is None:
-            instance_file = Path(f"pyRDDLGym_symbolic/examples/files/{domain}/instance{instance}.rddl")        
+            if domain_file is None:
+                domain_file = Path(f"pyRDDLGym_symbolic/examples/files/{domain}/domain.rddl")
+            if instance_file is None:
+                instance_file = Path(f"pyRDDLGym_symbolic/examples/files/{domain}/instance{instance}.rddl")        
 
-        # Read and parse domain and instance
-        reader = RDDLReader(domain_file, instance_file)
-        rddl_txt = reader.rddltxt
-        parser = RDDLParser(None, False)
-        parser.build()
-        rddl_ast = parser.parse(rddl_txt)
+            # Read and parse domain and instance
+            reader = RDDLReader(domain_file, instance_file)
+            rddl_txt = reader.rddltxt
+            parser = RDDLParser(None, False)
+            parser.build()
+            rddl_ast = parser.parse(rddl_txt)
 
-        # Ground domain
-        grounder = RDDLGrounder(rddl_ast)
-        model = grounder.ground()
+            # Ground domain
+            grounder = RDDLGrounder(rddl_ast)
+            model = grounder.ground()
 
-        # XADD compilation
-        self.model = RDDLModelXADD(model, reparam=reparam)
-        self.model.compile()
+            # XADD compilation
+            self.model = RDDLModelXADD(model, reparam=reparam)
+            self.model.compile()
 
         self.cpfs: Dict[str, Union[int, List[int]]] = self.model.cpfs
         self.cpfs.update({'reward': self.model.reward})
