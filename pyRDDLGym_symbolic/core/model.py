@@ -487,8 +487,17 @@ class RDDLModelXADD(RDDLPlanningModel):
         return self._ns
 
     def print(self, node_id):
-        """Helper function for easy printing."""
-        print(self.context.get_exist_node(node_id))
+        """Helper function for easy printing for small nodes."""
+        s = set()
+        node = self.context.get_exist_node(node_id)
+        node.collect_nodes(s)
+        if len(s) < 200:
+            print(str(node))
+        else:
+            print(
+                f'Skip printing as node {node_id} has {len(s)} nodes'
+                ' which is more than 200.'
+            )
 
     def collect_vars(self, node_id: int) -> Set[str]:
         """Returns the set containing variables existing in the current node."""
