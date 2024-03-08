@@ -1,5 +1,5 @@
 import pygraphviz as pgv
-from pathlib import Path
+from pathlib import Path, PosixPath
 from typing import Optional, Dict, Union, List, Set
 
 from pyRDDLGym.core.grounder import RDDLGrounder
@@ -194,7 +194,8 @@ class RDDL2Graph:
         self.clear_cache()
         if not f_dir:
             f_dir = Path(f"tmp/{self._domain}")
-
+        elif not isinstance(f_dir, PosixPath):
+            f_dir = Path(f_dir)
         f_dir.mkdir(exist_ok=True, parents=True)
         f_path = f_dir / \
             f"{file_name}{('_' + fluent) if fluent else ''}{('_' + gfluent) if gfluent else ''}_inst_{self._instance}"
