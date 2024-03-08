@@ -93,9 +93,9 @@ class RDDL2Graph:
 
     def __init__(
             self,
+            domain: str,
             xadd_model: Optional[RDDLModelXADD] = None,
-            domain: str = None,
-            instance: str = '0',
+            instance: Union[str, int] = '0',
             domain_file: Optional[str] = None,
             instance_file: Optional[str] = None,
             directed: bool = True,
@@ -103,11 +103,10 @@ class RDDL2Graph:
             reparam: bool = False,
     ):
         self.model = xadd_model
+        self._domain = domain
+        self._instance = str(instance)
         # Build a XADD model if not provided
         if xadd_model is None:
-            assert domain is not None, "Domain name must be provided"
-            self._domain, self._instance = domain, str(instance)
-
             if domain_file is None:
                 domain_file = Path(f"pyRDDLGym_symbolic/examples/files/{domain}/domain.rddl")
             if instance_file is None:
@@ -188,10 +187,14 @@ class RDDL2Graph:
             file_name: str = 'example',
             fluent: Optional[str] = None,
             gfluent: Optional[str] = None,
-            file_type: str = 'pdf'):
+            file_type: str = 'pdf',
+            f_dir: str = '',
+    ):
         """Saves a graph of the DBN dependency structure of a given RDDL instance to a file."""
         self.clear_cache()
-        f_dir = Path(f"tmp/{self._domain}")
+        if not f_dir:
+            f_dir = Path(f"tmp/{self._domain}")
+
         f_dir.mkdir(exist_ok=True, parents=True)
         f_path = f_dir / \
             f"{file_name}{('_' + fluent) if fluent else ''}{('_' + gfluent) if gfluent else ''}_inst_{self._instance}"
