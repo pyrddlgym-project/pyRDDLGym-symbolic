@@ -42,10 +42,11 @@ def main(
 
     if save_graph:
         Path(f'tmp/{domain}').mkdir(parents=True, exist_ok=True)
-        
+
     if cpf is not None or cpf == 'reward':
         if cpf == 'reward':
             expr = xadd_model.reward
+            node = context.get_exist_node(expr)
         else:
             expr = xadd_model.cpfs.get(f"{cpf}'")
         if expr is None:
@@ -53,16 +54,16 @@ def main(
         print(f"cpf {cpf}':", end='\n')
         xadd_model.print(expr)
         if save_graph:
-            f_path = f"{domain}/{domain}_inst0_{cpf}"
-            context.save_graph(expr, f_path)
+            f_path = f"{domain}/{domain.replace('/', '_')}_inst0_{cpf}"
+            context.save_graph(expr, f_path, file_type='pdf')
     else:
         for cpf_, expr in xadd_model.cpfs.items():
             print(f"cpf {cpf_}:", end='\n')
             xadd_model.print(expr)
             if save_graph:
                 cpf = cpf_.strip("'")
-                f_path = f"{domain}/{domain}_inst0_{cpf}"
-                context.save_graph(expr, f_path)
+                f_path = f"{domain}/{domain.replace('/', '_')}_inst0_{cpf}"
+                context.save_graph(expr, f_path, file_type='pdf')
 
 
 if __name__ == "__main__":
