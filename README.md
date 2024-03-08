@@ -12,6 +12,21 @@ In this directory, we provide symbolic toolkits that you can use with [pyRDDLGym
 - [RDDL simulation with the symbolically compiled model](#simulation)
 
 
+## Quickstart with Google Colab
+
+To assist your understanding and ease the process of getting started with the `pyRDDLGym-symbolic` library, we have prepared a Google Colab notebook. This notebook includes a detailed installation procedure as well as simple, illustrative examples to help you quickly grasp how to use the library effectively.
+
+Follow the steps below to access and use the Google Colab notebook:
+
+1. **Access the Notebook:** Click on the following link to open the Google Colab notebook: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mMQFjLyf878RgR-gp6z3oZJNDwPyGUdt?usp=sharing).
+
+2. **Follow the Instructions:** The notebook contains step-by-step instructions for installing necessary packages to use with the `pyRDDLGym-symbolic` library and running simple examples.
+
+3. **Feedback and Questions:** If you encounter any issues or have questions regarding the `pyRDDLGym-symbolic` library or the Google Colab notebook, please feel free to open an issue on the GitHub repository.
+
+Happy coding!
+
+
 ## Installation
 
 ```
@@ -28,12 +43,15 @@ pip install pyrddlgym
 # (Optional) install rddlrepository-v2
 pip install rddlrepository
 
-# Install Gurobipy (make sure you have a license)
+# (Optional) Install Gurobipy (make sure you have a license)
 python -m pip install gurobipy
 
 # Finally, install pyRDDLGym_symbolic
 cd ~/path/to/pyRDDLGym_symbolic
 pip install -e .
+
+# Or simply, install from pypi
+pip install pyrddlgym-symbolic
 ```
 
 ### Installing pygraphviz
