@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyRDDLGym_symbolic"
-version = "0.0.9"
+version = "0.0.10"
 authors = [
   { name="Jihwan Jeong", email="jiihwan.jeong@gmail.com" },
 ]
@@ -25,7 +25,7 @@ classifiers = [
 dependencies = [
   "symengine>=0.11.0",
   "pyRDDLGym>=2.0",
-  "xaddpy>=0.2.7",
+  "xaddpy>=0.2.8",
   "sympy>=1.12",
 ]
 [project.urls]
