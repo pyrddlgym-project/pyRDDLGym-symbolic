@@ -178,8 +178,6 @@ class SymbolicSolver:
             if v not in var_set:
                 continue
 
-            print(f'Variables in Q: {var_set}')
-            print(f'Regressing variable: {v}')
             # Otherwise, regress.
             if v in self.mdp.cont_ns_vars or v in self.mdp.cont_i_vars:
                 q = self.regress_cvars(q, cpfs[v], v)
