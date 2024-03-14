@@ -137,7 +137,7 @@ class SymbolicSolver:
         """Sorts the given variable set by level."""
         return sorted(
             var_set,
-            key=lambda v: self.var_to_level.get(v, float('inf')),
+            key=lambda v: self.var_to_level.get(str(v), float('inf')),
             reverse=True,
         )
 
@@ -178,6 +178,8 @@ class SymbolicSolver:
             if v not in var_set:
                 continue
 
+            print(f'Variables in Q: {var_set}')
+            print(f'Regressing variable: {v}')
             # Otherwise, regress.
             if v in self.mdp.cont_ns_vars or v in self.mdp.cont_i_vars:
                 q = self.regress_cvars(q, cpfs[v], v)

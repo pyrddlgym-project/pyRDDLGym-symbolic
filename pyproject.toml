@@ -25,8 +25,7 @@ classifiers = [
 dependencies = [
   "symengine>=0.11.0",
   "pyRDDLGym>=2.0",
-  "gurobipy>=10.0.0",
-  "xaddpy>=0.2.5",
+  "xaddpy>=0.2.7",
   "sympy>=1.12",
 ]
 [project.urls]

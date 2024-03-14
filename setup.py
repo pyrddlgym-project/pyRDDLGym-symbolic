@@ -20,7 +20,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
       name='pyRDDLGym-symbolic',
-      version='0.0.8',
+      version='0.0.9',
       author="Jihwan Jeong, Michael Gimelfarb, Scott Sanner",
       author_email="jiihwan.jeong@gmail.com, mike.gimelfarb@mail.utoronto.ca, ssanner@mie.utoronto.ca",
       description="pyRDDLGym-symbolic: Symbolic toolset for pyRDDLGym via XADD.",
@@ -28,7 +28,7 @@ setup(
       packages=find_packages(),
       install_requires=[
           'pyRDDLGym>=2.0',
-          'xaddpy>=0.2.5',
+          'xaddpy>=0.2.7',
           'sympy>=1.12',
           'symengine>=0.11.0',
         ],

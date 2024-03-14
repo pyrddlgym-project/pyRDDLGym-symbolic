@@ -1,4 +1,4 @@
-"""An example VI run."""
+"""An example PE run."""
 
 import argparse
 import os
