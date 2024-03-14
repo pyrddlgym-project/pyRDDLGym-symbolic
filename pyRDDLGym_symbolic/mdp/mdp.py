@@ -116,7 +116,7 @@ class MDP:
             s_v_name = self.model._var_name_to_sym_var_name[v_name]
             v = self.context._str_var_to_var[s_v_name]
             if v.is_Boolean and (
-                (v_name in self.model.next_state.values() or v_name in self.model.interm)
+                (v_name in self.model.next_state.values() or v_name in self.model.interm_fluents)
             ):
                 cpf_ = dual_cpfs_bool.get(v_name)
                 if cpf_ is None:
