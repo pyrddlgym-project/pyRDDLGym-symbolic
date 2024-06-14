@@ -20,7 +20,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
       name='pyRDDLGym-symbolic',
-      version='0.0.10',
+      version='0.0.11',
       author="Jihwan Jeong, Michael Gimelfarb, Scott Sanner",
       author_email="jiihwan.jeong@gmail.com, mike.gimelfarb@mail.utoronto.ca, ssanner@mie.utoronto.ca",
       description="pyRDDLGym-symbolic: Symbolic toolset for pyRDDLGym via XADD.",
